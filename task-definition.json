@@ -1,0 +1,32 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "container-name",
+            "essential": true,
+            "image": "123456789012.dkr.ecr.region.amazonaws.com/image:tag",
+            "memoryReservation": 512,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "logs-group",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "prefix"
+                }
+            },
+            "portMappings": [
+              {
+                 "containerPort": 443,
+                 "hostPort": 443,
+                 "protocol": "tcp"
+              }
+           ]
+        }
+    ],
+    "family": "task-definition-name",
+    "networkMode": "bridge",
+    "taskRoleArn": "arn:aws:iam::123456789012:role/roleArn",
+    "executionRoleArn": "arn:aws:iam::123456789012:role/roleArn",
+    "requiresCompatibilities": [
+        "EC2"
+    ]
+}
